@@ -4,13 +4,17 @@ const personTable = {};
 const allPersonIds = [];
 
 export const create = ({ fname, lname }) => {
-  const id = cuid();
-  const person = { id, fname, lname };
+  if (fname && lname) {
+    const id = cuid();
+    const person = { id, fname, lname };
 
-  personTable[id] = person;
-  allPersonIds.push(id);
+    personTable[id] = person;
+    allPersonIds.push(id);
 
-  return person;
+    return person;
+  }
+
+  return null;
 };
 
 export const update = (id, props) => {

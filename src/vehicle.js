@@ -4,13 +4,17 @@ const vehicleTable = {};
 const allVehicleIds = [];
 
 export const create = ({ make, model }) => {
-  const id = cuid();
-  const vehicle = { id, make, model };
+  if (make && model) {
+    const id = cuid();
+    const vehicle = { id, make, model };
 
-  vehicleTable[id] = vehicle;
-  allVehicleIds.push(id);
+    vehicleTable[id] = vehicle;
+    allVehicleIds.push(id);
 
-  return vehicle;
+    return vehicle;
+  }
+
+  return null;
 };
 
 export const update = (id, props) => {
